@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 6px;
+            text-align: left;
+        }
+
+        input,
+        textarea,
+        button {
+            box-sizing: border-box;
+            font: inherit;
+            width: 100%;
+            padding: 10px;
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h2>Email Me</h2>
+
+        <form id="contactForm">
+            <label for="email">Your email</label>
+            <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Your email"
+                required
+            >
+
+            <label for="message">Your message</label>
+            <textarea
+                id="message"
+                name="message"
+                placeholder="Write your message"
+                minlength="1"
+                required
+            ></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!email || !message) {
+                alert("Please enter your email and message.");
+                return;
+            }
+
+            const subject = "Website Message";
+            const body =
+                "Email: " + email + "\n\n" +
+                "Message: " + message;
+
+            const mailtoUrl =
+                "mailto:akc44519+emailmesite@gmail.com" +
+                "?subject=" + encodeURIComponent(subject) +
+                "&body=" + encodeURIComponent(body);
+
+            window.location.href = mailtoUrl;
+        });
+    </script>
+</body>
+</html>
